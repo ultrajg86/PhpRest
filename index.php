@@ -14,19 +14,23 @@ $container = $app->getContainer();
 
 //Register component on container
 $container['view'] = function($container){
-    $view = new \Slim\Views\Twig('pages', ['cache'=>'cache']);
-    $basePath = rtrim(str_ireplace('index.php', '', $container['request']->getUri()->getBasePath()), '/');
-    $view->addExtension(new \Slim\Views\TwigExtension($container['router'], $basePath));
-    return $view;
+//    $view = new \Slim\Views\Twig('pages', ['cache'=>'cache']);
+//    $basePath = rtrim(str_ireplace('index.php', '', $container['request']->getUri()->getBasePath()), '/');
+//    $view->addExtension(new \Slim\Views\TwigExtension($container['router'], $basePath));
+//    return $view;
+
+    return new \Slim\Views\PhpRenderer('pages');
 };
 
 //middleware
+/*
 $app->add(function($request, $response, $next){
     $response->getBody()->write('BEFORE');
     $response = $next($request, $response);
     $response->getBody()->write('AFTER');
    return $response;
 });
+*/
 
 //Route
 $app->get('/', function (Request $request, $response, $args) {
@@ -51,14 +55,9 @@ $app->group('/api', function(){
 });
 
 $app->get('/hello/[{name}]', function (Request $request, Response $response, $args) {
-    var_dump($args);
-    $name = $request->getAttribute('name');
-    if(empty($name)){
-        $name = 'World';
-    }
-    $response->getBody()->write("Hello, $name");
-
-    return $response;
+    return $this->view->render($response, 'profile.html', [
+        'name' => $args['name']
+    ]);
 });
 
 $app->run();
