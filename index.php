@@ -33,9 +33,10 @@ $app->add(function($request, $response, $next){
 */
 
 //user
-$app->group('/', function(){
+$app->group('', function(){
 
-    $this->get('', function (Request $request, $response, $args) {
+    $this->get('/', function (Request $request, $response, $args) {
+        echo 'aaaaaaaaaaaa';
         return $this->view->render($response, 'profile.php', [
             'name' => $args['name']
         ]);
@@ -43,24 +44,19 @@ $app->group('/', function(){
 
     $this->group('/user', function(){
 
-        $this->get('', function(Request $request, Response $response){
-            //view login
-            echo 'aa';
+        $this->get('', function (Request $request, $response, $args) {
+            return $this->view->render($response, 'profile.php', [
+                'name' => $args['name']
+            ]);
         });
 
-        $this->post('', function(Request $request, Response $response){
-            //view login ok
+        $this->get('/login', function (Request $request, $response, $args) {
+            return $this->view->render($response, 'profile.php', [
+                'name' => $args['name']
+            ]);
         });
-
-        $this->get('/join', function(Request $request, Response $response){
-            //view login
-        });
-
-        $this->post('/join', function(Request $request, Response $response){
-            //view login ok
-        });
-
     });
+
 
     $this->post('/user', function (Request $request, Response $response) {
         $body = $request->getBody()->getContents();
