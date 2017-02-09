@@ -18,7 +18,9 @@
 </head>
 <body>
 <div id="content">
-    {% block nav %}{% endblock %}
+
+    <a href="/">HOME</a> &gt; 회원 &gt; 목록
+
     {% block body %}{% endblock %}
 </div>
 <div id="footer">

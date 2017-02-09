@@ -5,7 +5,12 @@ use \Psr\Http\Message\ResponseInterface as Response;
 
 require 'vendor/autoload.php';
 
-$app = new \Slim\App;
+$app = new \Slim\App([
+    'settings' => [
+        // Only set this if you need access to route within middleware
+        'determineRouteBeforeAppMiddleware' => true
+    ]
+]);
 
 // Get container
 $container = $app->getContainer();
@@ -23,23 +28,34 @@ $container['view'] = function ($container) {
 };
 
 //middleware
-/*
-$app->add(function($request, $response, $next){
-    $response->getBody()->write('BEFORE');
-    $response = $next($request, $response);
-    $response->getBody()->write('AFTER');
-   return $response;
+
+// routes...
+$app->add(function (Request $request, Response $response, callable $next) {
+    $route = $request->getAttribute('route');
+
+    // return NotFound for non existent route
+    if (empty($route)) {
+        throw new NotFoundException($request, $response);
+    }
+
+    $name = $route->getName();
+    $groups = $route->getGroups();
+    $methods = $route->getMethods();
+    $arguments = $route->getArguments();
+
+    // do something with that information
+    return $next($request, $response);
 });
-*/
 
 //user
 $app->group('', function(){
 
     $this->get('/', function (Request $request, $response, $args) {
-        echo 'aaaaaaaaaaaa';
+
         return $this->view->render($response, 'profile.php', [
             'name' => $args['name']
         ]);
+
     });
 
     $this->group('/user', function(){

@@ -1,9 +1,5 @@
 {% extends "layout.php" %}
 
-{% block nav %}
-HOME &gt; 회원 &gt; 목록
-{% endblock %}
-
 {% block body %}
 <h1>User List</h1>
 <ul class="list-group">
