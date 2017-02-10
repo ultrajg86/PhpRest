@@ -1,5 +1,9 @@
 <?php
 
+/*
+ * template url : https://bootstrapmade.com/demo/Moderna/
+ */
+
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
@@ -8,12 +12,34 @@ require 'vendor/autoload.php';
 $app = new \Slim\App([
     'settings' => [
         // Only set this if you need access to route within middleware
-        'determineRouteBeforeAppMiddleware' => true
+        'determineRouteBeforeAppMiddleware' => true,
+        'displayErrorDetails' => true,
+        'db'=>[
+            'driver' => 'mysqli',
+            'host' => 'localhost',
+            'database' => 'database',
+            'username' => 'user',
+            'password' => 'password',
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => ''
+        ]
     ]
 ]);
 
 // Get container
 $container = $app->getContainer();
+
+// Service factory for the ORM
+$container['db'] = function ($container) {
+    $capsule = new \Illuminate\Database\Capsule\Manager;
+    $capsule->addConnection($container['settings']['db']);
+
+    $capsule->setAsGlobal();
+    $capsule->bootEloquent();
+
+    return $capsule;
+};
 
 // Register component on container
 $container['view'] = function ($container) {
@@ -47,14 +73,11 @@ $app->add(function (Request $request, Response $response, callable $next) {
     return $next($request, $response);
 });
 
-//user
+//public route
 $app->group('', function(){
 
     $this->get('/', function (Request $request, $response, $args) {
-
-        return $this->view->render($response, 'profile.php', [
-            'name' => $args['name']
-        ]);
+        return $this->view->render($response, 'profile.php');
 
     });
 
@@ -82,7 +105,7 @@ $app->group('', function(){
 
 });
 
-//admin
+//admin route
 $app->group('/admin', function(){
 
     $this->get('/', function (Request $request, Response $response){
@@ -94,7 +117,7 @@ $app->group('/admin', function(){
 });
 
 
-//api
+//api route
 $app->group('/api', function(){
 
     $this->get('', function (Request $request, Response $response){
