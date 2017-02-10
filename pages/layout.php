@@ -16,13 +16,6 @@
     <!-- Theme skin -->
     <link href="skins/default.css" rel="stylesheet" />
 
-    <!-- =======================================================
-        Theme Name: Moderna
-        Theme URL: https://bootstrapmade.com/free-bootstrap-template-corporate-moderna/
-        Author: BootstrapMade
-        Author URL: https://bootstrapmade.com
-    ======================================================= -->
-
 </head>
 <body>
 <div id="wrapper">
@@ -41,6 +34,7 @@
                 <div class="navbar-collapse collapse ">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="index.html">Home</a></li>
+                        <li><a href="index.html">Notice</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle " data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">Features <b class=" icon-angle-down"></b></a>
                             <ul class="dropdown-menu">
