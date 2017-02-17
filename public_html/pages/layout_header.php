@@ -32,6 +32,11 @@
 </header>
 <!-- end header -->
 
+{%
+    
+
+%}
+
 {% if type == main %}
 <section id="inner-headline">
     <div class="container">
