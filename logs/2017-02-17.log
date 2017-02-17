@@ -1,0 +1,7 @@
+[2017-02-17 06:08:53] LOG.INFO: Start [] []
+[2017-02-17 06:10:24] LOG.INFO: Info log [] []
+[2017-02-17 06:10:24] LOG.DEBUG: Debug log [] []
+[2017-02-17 06:10:24] LOG.ERROR: Error log [] []
+[2017-02-17 06:11:28] LOG.INFO: Info log {"key":"value"} []
+[2017-02-17 06:11:28] LOG.DEBUG: Debug log [] []
+[2017-02-17 06:11:28] LOG.ERROR: Error log [] []
