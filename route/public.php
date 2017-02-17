@@ -15,7 +15,6 @@ $app->group('', function(){
     });
 
     $this->get('/contact', function ($request, $response, $args) {
-        var_dump($args);
         return $this->view->render($response, 'contact/contact.php');
     });
 
@@ -25,7 +24,6 @@ $app->group('', function(){
 
     $this->get('/notice/{idx}', function ($request, $response, $args) {
         return $this->view->render($response, 'notice/view_page.php');
-
     });
 
     $this->group('/user', function(){
@@ -51,6 +49,14 @@ $app->group('', function(){
     });
 
     $this->post('/upload', function ($request, $response) {
+
+        require __DIR__ . '/../libraries/Uploader.php';
+
+        $uploader = new Uploader();
+        $resutl = $uploader->run($_FILES['newfile'], true);
+        var_dump($resutl);
+
+        /*
         $files = $request->getUploadedFiles();
         if (empty($files['newfile'])) {
             throw new Exception('Expected a newfile');
@@ -61,8 +67,9 @@ $app->group('', function(){
 
         if ($newfile->getError() === UPLOAD_ERR_OK) {
             $uploadFileName = $newfile->getClientFilename();
-            $newfile->moveTo($_SERVER['DOCUMENT_ROOT'].'/uploads/' . date('Y') . '/' . $uploadFileName);
+            $newfile->moveTo(UPLOAD_ROOT .'/uploads/' . date('Y') . '/' . $uploadFileName);
         }
+        */
 
     });
 
