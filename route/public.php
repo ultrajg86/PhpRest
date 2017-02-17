@@ -53,6 +53,13 @@ $app->group('', function(){
         require __DIR__ . '/../libraries/Uploader.php';
 
         $uploader = new Uploader();
+        /*
+        $uploader->setThumbnail([
+            '_ss' => array('width'=>100, 'height'=>100),
+            '_nn' => array('width'=>200, 'height'=>200),
+            '_bb' => array('width'=>300, 'height'=>300),
+        ]);
+        */
         $resutl = $uploader->run($_FILES['newfile'], true);
         var_dump($resutl);
 

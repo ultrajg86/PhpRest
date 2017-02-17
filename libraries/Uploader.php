@@ -16,6 +16,11 @@ class Uploader{
 		//$this->directory = '/uploads';
 		$this->host = 'http://' . $_SERVER['HTTP_HOST'];
         $this->hidden_image_path = $this->directory . '/images/hidden.png';
+
+        //defautl thumbnail
+        /*
+         * key is thumbnail prefix (ex : filename . key . ext => uuid . _s . jpg)
+         */
         $this->thumbnail_info = array(
             '_s' => array('width'=>50, 'height'=>50),
             '_n' => array('width'=>100, 'height'=>100),
@@ -35,7 +40,7 @@ class Uploader{
 	        if(empty($key) || is_array($value) === false){
 	            return false;
             }
-            if(isset($value['width']) || isset($value['height'])){
+            if(!isset($value['width']) || !isset($value['height'])){
 	            return false;
             }
         }
