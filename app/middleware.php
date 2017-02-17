@@ -10,6 +10,8 @@
 
 // routes...
 $app->add(function ($request, $response, callable $next) {
+
+    //$response->getBody()->write('start');
     $route = $request->getAttribute('route');
 
     // return NotFound for non existent route
@@ -26,5 +28,8 @@ $app->add(function ($request, $response, callable $next) {
     $args = array('name'=>$name, 'groups'=>$groups, 'methods'=>$methods, 'arguments'=>$arguments);
 
     // do something with that information
-    return $next($request, $response, $args);
+    $response = $next($request, $response, $args);  //run
+
+    //$response->getBody()->write('end');
+    return $response;
 });

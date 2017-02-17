@@ -22,6 +22,7 @@ $container['db'] = function ($container) {
 
 // Register component on container
 $container['view'] = function ($container) {
+
     //$view = new \Slim\Views\Twig('pages', ['cache' => 'cache']);
     $view = new \Slim\Views\Twig('pages', [
         'debug' => true
@@ -31,9 +32,11 @@ $container['view'] = function ($container) {
     $basePath = rtrim(str_ireplace('index.php', '', $container['request']->getUri()->getBasePath()), '/');
     $view->addExtension(new Slim\Views\TwigExtension($container['router'], $basePath));
 
+    //hm.....
+    $view->getEnvironment()->addGlobal('base_url', '/');
+
     return $view;
 };
-
 
 //logging
 $container['logger'] = function($container){
@@ -41,4 +44,13 @@ $container['logger'] = function($container){
   $file_handler = new \Monolog\Handler\StreamHandler('../logs/' . date('Y-m-d') . '.log');
   $logger->pushHandler($file_handler);
   return $logger;
+};
+
+
+
+//service layer
+// not good....
+$container['userService'] = function($container){
+    require __DIR__ . '/../service/UserService.php';
+    return new UserService();
 };

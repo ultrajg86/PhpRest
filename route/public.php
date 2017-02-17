@@ -29,12 +29,15 @@ $app->group('', function(){
         return $this->view->render($response, 'notice/view_page.php');
     });
 
+    $this->get('/blog', function ($request, $response, $args) {
+        return $this->view->render($response, 'blog/view_page.php');
+    });
+
     $this->group('/user', function(){
 
         $this->get('', function ($request, $response, $args) {
-            return $this->view->render($response, 'profile.php', [
-                'name' => $args['name']
-            ]);
+            //$userInfo = $this->get('userService')->getUserInfo();
+            return $this->view->render($response, 'notice/view_page.php');
         });
 
         $this->get('/login', function ($request, $response, $args) {

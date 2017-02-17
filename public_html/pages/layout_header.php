@@ -23,7 +23,7 @@
                         </ul>
                     </li>
                     <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="/blog">Blog</a></li>
                     <li><a href="/contact">Contact</a></li>
                 </ul>
             </div>
@@ -38,8 +38,9 @@
         <div class="row">
             <div class="col-lg-12">
                 <ul class="breadcrumb">
-                    <li><a href="/"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i></li>
-                    <li class="active">Notice</li>
+                    <li><a href="#"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i></li>
+<!--                    <li><a href="#">Features</a><i class="icon-angle-right"></i></li>-->
+                    <li class="active">Typography</li>
                 </ul>
             </div>
         </div>

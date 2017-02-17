@@ -7,14 +7,14 @@
     <meta name="description" content="" />
     <meta name="author" content="http://bootstraptaste.com" />
     <!-- css -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link href="css/fancybox/jquery.fancybox.css" rel="stylesheet">
-    <link href="css/jcarousel.css" rel="stylesheet" />
-    <link href="css/flexslider.css" rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet" />
+    <link href="{{ base_url }}css/bootstrap.min.css" rel="stylesheet" />
+    <link href="{{ base_url }}css/fancybox/jquery.fancybox.css" rel="stylesheet">
+    <link href="{{ base_url }}css/jcarousel.css" rel="stylesheet" />
+    <link href="{{ base_url }}css/flexslider.css" rel="stylesheet" />
+    <link href="{{ base_url }}css/style.css" rel="stylesheet" />
 
     <!-- Theme skin -->
-    <link href="skins/default.css" rel="stylesheet" />
+    <link href="{{ base_url }}skins/default.css" rel="stylesheet" />
 
     <!-- =======================================================
         Theme Name: Moderna
@@ -37,17 +37,17 @@
 <!-- javascript
     ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="js/jquery.js"></script>
-<script src="js/jquery.easing.1.3.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.fancybox.pack.js"></script>
-<script src="js/jquery.fancybox-media.js"></script>
-<script src="js/google-code-prettify/prettify.js"></script>
-<script src="js/portfolio/jquery.quicksand.js"></script>
-<script src="js/portfolio/setting.js"></script>
-<script src="js/jquery.flexslider.js"></script>
-<script src="js/animate.js"></script>
-<script src="js/custom.js"></script>
+<script src="{{ base_url }}js/jquery.js"></script>
+<script src="{{ base_url }}js/jquery.easing.1.3.js"></script>
+<script src="{{ base_url }}js/bootstrap.min.js"></script>
+<script src="{{ base_url }}js/jquery.fancybox.pack.js"></script>
+<script src="{{ base_url }}js/jquery.fancybox-media.js"></script>
+<script src="{{ base_url }}js/google-code-prettify/prettify.js"></script>
+<script src="{{ base_url }}js/portfolio/jquery.quicksand.js"></script>
+<script src="{{ base_url }}js/portfolio/setting.js"></script>
+<script src="{{ base_url }}js/jquery.flexslider.js"></script>
+<script src="{{ base_url }}js/animate.js"></script>
+<script src="{{ base_url }}js/custom.js"></script>
 
 </body>
 </html>
