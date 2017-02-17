@@ -11,6 +11,9 @@
 $app->group('', function(){
 
     $this->get('/', function ($request, $response, $args) {
+        $this->logger->addInfo('Info log', ['key'=>'value']);
+        $this->logger->addDebug('Debug log');
+        $this->logger->addError('Error log');
         return $this->view->render($response, 'index.php', ['type'=>'main']);
     });
 

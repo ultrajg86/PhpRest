@@ -2,12 +2,15 @@
 
 XAMPP 
 
-php : 7.1.1
+-. php : 7.1.1
 
-apache : 2.0
+-. apache : 2.0
 
-mysql : 5
+-. mysql : 5
 
+-. document rooot : public_html
+
+##############################################
 
 Slim3 Framwork
 
