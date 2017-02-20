@@ -22,7 +22,9 @@
     <tbody>
         <tr>
             <td class="text-center">4</td>
-            <td class="text-left">부산 여행~</td>
+            <td class="text-left">
+                <a href="{{ base_url }}/notices/1">부산 여행~</a>
+            </td>
             <td class="text-center">2</td>
             <td class="text-center">{{ '2017-01-26' }}</td>
             <td class="text-center">{{ 10000|number_format }}</td>

@@ -1,8 +1,5 @@
 <?php
 
-phpinfo();
-exit;
-
 /*
  * template url : https://bootstrapmade.com/demo/Moderna/
  */

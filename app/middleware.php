@@ -19,16 +19,23 @@ $app->add(function ($request, $response, callable $next) {
         throw new NotFoundException($request, $response);
     }
 
-    $name = $route->getName();
-    $groups = $route->getGroups();
-    $methods = $route->getMethods();
-    $arguments = $route->getArguments();
+//    $name = $route->getName();
+//    $groups = $route->getGroups();
+//    $methods = $route->getMethods();
+//    $arguments = $route->getArguments();
+//    $uri = $request->getUri();//this works
 
     //var_dump($name, $groups, $methods, $arguments);
-    $args = array('name'=>$name, 'groups'=>$groups, 'methods'=>$methods, 'arguments'=>$arguments);
+    //$args = array('name'=>$name, 'groups'=>$groups, 'methods'=>$methods, 'arguments'=>$arguments);
+
+    $view = $this->get('view');
+    $path = $request->getUri()->getPath();//this works
+    $view->getEnvironment()->addGlobal('currentPath', $path);
+
+    //$view->getEnvironment()->addGlobal('view', $args);
 
     // do something with that information
-    $response = $next($request, $response, $args);  //run
+    $response = $next($request, $response);  //run
 
     //$response->getBody()->write('end');
     return $response;
