@@ -33,7 +33,7 @@ $container['view'] = function ($container) {
     $view->addExtension(new Slim\Views\TwigExtension($container['router'], $basePath));
 
     //hm.....
-    $view->getEnvironment()->addGlobal('base_url', '/');
+    $view->getEnvironment()->addGlobal('base_url', _HOST_);
 
     return $view;
 };

@@ -12,17 +12,15 @@ class UserService{
         echo __METHOD__;
     }
 
-    public function getUserInfo(){
+    public function __destruct(){
+        echo __METHOD__;
+    }
 
-        var_dump($this->app);
+    public function getUserInfo(){
 
         return array(
             'user_id' => 'ultrajg86'
         );
-    }
-
-    public function __destruct(){
-        echo __METHOD__;
     }
 
 }

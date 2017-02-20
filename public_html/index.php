@@ -1,5 +1,8 @@
 <?php
 
+phpinfo();
+exit;
+
 /*
  * template url : https://bootstrapmade.com/demo/Moderna/
  */
@@ -19,7 +22,7 @@ require __DIR__ . '/../app/dependencies.php';
 
 require __DIR__ . '/../app/middleware.php';
 
-require __DIR__ . '/../route/routes.php';
+require __DIR__ . '/../app/routes.php';
 
 // Run app
 $app->run();
