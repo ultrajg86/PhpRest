@@ -54,10 +54,14 @@ $container['logger'] = function($container){
 };
 
 
-
 //service layer
-// not good....
-$container['userService'] = function($container){
-    require __DIR__ . '/../service/UserService.php';
-    return new UserService();
+//so..so...
+$container['service'] = function($container){
+    //require __DIR__ . '/../service/UserService.php';
+
+    $db = $container->get('db');
+    $logger = $container->get('logger');
+
+    require 'services.php';
+    return new Service($db, $logger);
 };

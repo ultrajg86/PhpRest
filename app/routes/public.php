@@ -26,7 +26,12 @@ $app->group('', function(){
     });
 
     $this->get('/notices', function ($request, $response, $args) {
-        return $this->view->render($response, '/notice/list_page.php');
+
+        $noticeService = $this->get('service')->NoticeService;
+
+        $lists = $noticeService->getLists();
+
+        return $this->view->render($response, '/notice/list_page.php', ['lists'=>$lists]);
     });
 
     $this->get('/notices/{idx}', function ($request, $response, $args) {
@@ -40,8 +45,6 @@ $app->group('', function(){
     $this->group('/user', function(){
 
         $this->get('', function ($request, $response, $args) {
-            $userInfo = $this->get('userService')->getUserInfo();
-            var_dump($userInfo);
             return $this->view->render($response, 'notice/view_page.php');
         });
 
