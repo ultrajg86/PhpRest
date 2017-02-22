@@ -12,6 +12,7 @@ defined('_HOST_')     OR define('_HOST_', 'http://localhost');
 
 defined('DOCUMENT_ROOT')     OR define('DOCUMENT_ROOT', $_SERVER['DOCUMENT_ROOT']);
 defined('SERVICE_PATH')     OR define('SERVICE_PATH', DOCUMENT_ROOT . '/../service');
+defined('MODEL_PATH')     OR define('MODEL_PATH', DOCUMENT_ROOT . '/../model');
 
 defined('FILE_READ_MODE')  OR define('FILE_READ_MODE', 0644);
 defined('FILE_WRITE_MODE') OR define('FILE_WRITE_MODE', 0666);

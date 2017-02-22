@@ -8,11 +8,9 @@
 
 class NoticeService{
 
-    private $db;
     private $logger;
 
-    public function __construct($db, $logger){
-        $this->db = $db;
+    public function __construct($logger){
         $this->logger = $logger;
     }
 

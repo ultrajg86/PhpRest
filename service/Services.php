@@ -6,13 +6,13 @@
  * Time: 오전 9:47
  */
 
+namespace App\Service;
+
 class Service{
 
-    private $db;
     private $logger;
 
-    public function __construct($db, $logger){
-        $this->db = $db;
+    public function __construct($logger){
         $this->logger = $logger;
     }
 
@@ -31,7 +31,9 @@ class Service{
 
     private function load($name){
         require_once SERVICE_PATH . '/' . $name . '.php';
-        return new $name($this->db, $this->logger);
+        return new $name($this->logger);
     }
 
 }
+
+?>
