@@ -22,14 +22,23 @@ class NoticeService{
         $this->logger->info(__METHOD__, [func_get_args()]);
 
         $list = array();
-        for($i=0; $i<10; $i++){
-            $list[] = array(
-                'no'=>$i,
-                'title'=>'1111111' . rand(1, 999),
-                'writer'=>'writer' . $i,
-                'date'=>date('Y-m-d'),
-                'count'=>rand(10, 100)
-            );
+
+        $thumbnail = '/uploads/' . date('Y') . '/' . date('m') . '/';
+        $folderPath = DOCUMENT_ROOT . $thumbnail;
+
+
+        $fileRead = opendir($folderPath);
+        while(($file = readdir($fileRead)) !== false){
+            if(strpos($file, '_b')){
+                $list[] = array(
+                    'no'=>rand(1, 10),
+                    'title'=>$file,
+                    'writer'=>'writer',
+                    'thumbnail'=>$thumbnail . $file,
+                    'date'=>date('Y-m-d'),
+                    'count'=>rand(10, 100)
+                );
+            }
         }
 
         return $list;

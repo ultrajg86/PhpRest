@@ -1,6 +1,7 @@
 {% extends "layout.php" %}
 
 {% block body %}
+<img src="{{ image_path }}"/>
 <h1>Upload a file</h1>
 <form method="POST" action="/upload" enctype="multipart/form-data">
     <label>Select file to upload:</label>

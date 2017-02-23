@@ -32,10 +32,17 @@ $app->group('', function(){
         $lists = $noticeService->getLists();
 
         return $this->view->render($response, '/notice/list_page.php', ['lists'=>$lists]);
+        //return $response->withJson($lists);
     });
 
     $this->get('/notices/{idx}', function ($request, $response, $args) {
-        return $this->view->render($response, '/notice/view_page.php');
+        $fileName = $args['idx'];
+        $ext = explode('.', $fileName);
+        $fileName = substr($fileName, 0, strpos($fileName, '_'));
+        echo $fileName;
+        $filePath = '/uploads/' . date('Y') . '/' . date('m') . '/' . $fileName . '.' . $ext[1];
+        return $this->view->render($response, '/notice/view_page.php', ['image_path'=>$filePath]);
+        //return $response->withJson(['image_path'=>$filePath]);
     });
 
     $this->get('/blog', function ($request, $response, $args) {
@@ -75,9 +82,9 @@ $app->group('', function(){
         ]);
         */
         $result = $uploader->run($_FILES['newfile'], true);
-        var_dump($result);
+        $filename = basename($result['file_renmae']);
 
-        return $response->withRedirect('/');
+        return $response->withRedirect('/notices/' . $filename);
 
         /*
         $files = $request->getUploadedFiles();
@@ -94,6 +101,11 @@ $app->group('', function(){
         }
         */
 
+    });
+
+    $this->get('/upload/{filename}', function($request, $response, $args){
+        $filePath = '/uploads/' . date('Y') . '/' . date('m') . '/' . $args['filename'];
+        return $this->view->render($response, '/notice/view_page.php', ['image_path'=>$filePath]);
     });
 
 });

@@ -23,7 +23,10 @@
         <tr>
             <td class="text-center">{{ list.no }}</td>
             <td class="text-left">
-                <a href="{{ base_url }}/notices/{{ list.no }}">{{ list.title }}</a>
+                <a href="{{ base_url }}/notices/{{ list.title }}">
+                    <img src="{{ list.thumbnail }}" />
+                    {{ list.title }}
+                </a>
             </td>
             <td class="text-center">{{ list.writer }}</td>
             <td class="text-center">{{ list.date }}</td>
